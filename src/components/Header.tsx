@@ -2,7 +2,6 @@ import React from 'react';
 
 const Header: React.FC = () => {
     return (
-        <section className='lg:h-[900px] py-12'>
             <header className='mb-12 lg:mb-0 z-20 relative px-4 lg:px-0'>
                 <div className='container mx-auto'>
                     <div className='flex items-center justify-between relative'>
@@ -19,8 +18,6 @@ const Header: React.FC = () => {
                     </div>
                 </div>
             </header>
-        </section>
-
     );
 }
 
