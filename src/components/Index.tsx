@@ -3,10 +3,14 @@ import Home from './Home';
 import Footer from './Footer';
 import Features from './Features';
 
-const Index: React.FC = () => {
+interface IndexProps {
+    isLoggedIn: boolean;
+    onLogout: () => void;
+  }
+const Index: React.FC<IndexProps> = ({ isLoggedIn, onLogout }) => {
   return (
     <div className='overflow-hidden'>
-      <Home />
+      <Home isLoggedIn={isLoggedIn} onLogout={onLogout}/>
       <Features />
       <Footer />
     </div>

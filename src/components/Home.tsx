@@ -5,13 +5,16 @@ import { heroData } from '../data';
 
 // import components
 import Header from './Header';
-
-const Hero: React.FC  = () => {
+interface HomeProps {
+  isLoggedIn: boolean;
+  onLogout: () => void;
+}
+const Hero: React.FC<HomeProps>  = ({ isLoggedIn, onLogout }) => {
   // destructure hero
   const { title, subtitle, btnText, image } = heroData;
   return (
     <section className='lg:h-[900px] py-12'>
-      <Header />
+      <Header isLoggedIn={isLoggedIn} onLogout={onLogout}/>
       <div className='container mx-auto h-full relative'>
         <div className='flex flex-col xl:flex-row items-center h-full md:py-24'>
           <div className='text-center xl:text-left xl:absolute'>
