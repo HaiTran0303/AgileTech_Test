@@ -5,11 +5,11 @@ import 'aos/dist/aos.css';
 
 import Signin from './components/Signin';
 import Index from './components/Index';
+import Profile from './components/Profile';
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
-  // Animate on scroll initialization
   useEffect(() => {
     Aos.init({
       duration: 1800,
@@ -18,13 +18,11 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Check if the user is logged in by checking the accessToken in localStorage
     const accessToken = localStorage.getItem('accessToken');
     setIsLoggedIn(!!accessToken);
   }, []);
 
   const handleLogout = () => {
-    // Clear the tokens from localStorage and update the login state
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     setIsLoggedIn(false);
@@ -40,6 +38,10 @@ const App: React.FC = () => {
         <Route 
           path="/login" 
           element={<Signin onLogin={() => setIsLoggedIn(true)} />} 
+        />
+        <Route 
+          path="/profile" 
+          element={isLoggedIn ? <Profile /> : <Navigate to="/login" />} 
         />
         <Route 
           path="*" 

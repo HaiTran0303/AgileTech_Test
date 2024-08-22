@@ -31,10 +31,9 @@ const Signin: React.FC<SigninProps> = ({ onLogin }) => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-10 rounded shadow-lg max-w-sm w-full">
+    <div className="bg-white flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="p-10 max-w-sm w-full">
         <div className="text-center mb-6">
-          <div className="bg-purple-500 h-10 w-10 rounded-full mx-auto mb-4"></div>
           <h2 className="text-2xl font-bold">Sign In</h2>
         </div>
         <div>
