@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 interface NewPostProps {
@@ -9,28 +9,15 @@ interface NewPostProps {
 const NewPost: React.FC<NewPostProps> = ({ onClose, onAdd }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [availableTags, setAvailableTags] = useState<string[]>([]);
+  const [tags, setTags] = useState('');
 
-  useEffect(() => {
-    const fetchTags = async () => {
-      try {
-        const response = await axios.get('https://api-test-web.agiletech.vn/posts/tags');
-        setAvailableTags(response.data);
-      } catch (error) {
-        console.error('Error fetching tags:', error);
-      }
-    };
-
-    fetchTags();
-  }, []);
-
-  const handleAddPost = async () => {
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
       await axios.post('https://api-test-web.agiletech.vn/posts', {
         title,
         description,
-        tags: selectedTags,
+        tags: tags.split(',').map(tag => tag.trim()),
       });
       onAdd();
       onClose();
@@ -39,43 +26,65 @@ const NewPost: React.FC<NewPostProps> = ({ onClose, onAdd }) => {
     }
   };
 
-  const handleTagSelection = (tag: string) => {
-    if (selectedTags.includes(tag)) {
-      setSelectedTags(selectedTags.filter((t) => t !== tag));
-    } else {
-      setSelectedTags([...selectedTags, tag]);
-    }
-  };
-
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <h2>Add New Post</h2>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <div className="tags">
-          {availableTags.sort().map((tag) => (
-            <label key={tag}>
-              <input
-                type="checkbox"
-                checked={selectedTags.includes(tag)}
-                onChange={() => handleTagSelection(tag)}
-              />
-              {tag}
+    <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+      <div className="bg-white rounded-lg p-8 w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6">Add New Post</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
+              Title
             </label>
-          ))}
-        </div>
-        <button onClick={handleAddPost}>Add Post</button>
-        <button onClick={onClose}>Cancel</button>
+            <input
+              id="title"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full border border-gray-300 p-2 rounded"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+              Description
+            </label>
+            <textarea
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full border border-gray-300 p-2 rounded"
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tags">
+              Tags (comma-separated)
+            </label>
+            <input
+              id="tags"
+              type="text"
+              value={tags}
+              onChange={(e) => setTags(e.target.value)}
+              className="w-full border border-gray-300 p-2 rounded"
+              required
+            />
+          </div>
+          <div className="flex justify-end">
+            <button
+              type="button"
+              onClick={onClose}
+              className="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500 mr-2"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-purple-500 text-white py-2 px-4 rounded hover:bg-purple-600"
+            >
+              Add Post
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

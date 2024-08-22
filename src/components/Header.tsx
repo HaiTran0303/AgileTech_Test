@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn, onLogout }) => {
               </button>
               <button
                 onClick={onLogout}
-                className='btn btn-secondary flex items-center gap-x-[20px] group'
+                className='btn btn-primary flex items-center gap-x-[20px] group'
               >
                 Logout
               </button>
