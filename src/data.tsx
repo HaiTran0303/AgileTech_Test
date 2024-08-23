@@ -1,15 +1,13 @@
-// import icons
 import { FaYoutube, FaInstagram, FaGithub } from 'react-icons/fa';
 import { BsChatDotsFill } from 'react-icons/bs';
 
-// import images
 import Feature1Img from '../src/assets/img/feature1.png';
 import Feature2Img from '../src/assets/img/feature2.png';
 import Feature3Img from '../src/assets/img/feature3.png';
 import Feature4Img from '../src/assets/img/feature4.png';
-// import Avatar1Img from '../src/assets/img/avatar1.png';
-// import Avatar2Img from '../src/assets/img/avatar2.png';
-// import Avatar3Img from '../src/assets/img/avatar3.png';
+import Avatar1Img from '../src/assets/img/avatar1.png';
+import Avatar2Img from '../src/assets/img/avatar2.png';
+import Avatar3Img from '../src/assets/img/avatar3.png';
 import LogoV2 from '../src/assets/img/logo-v2.png';
 import HeroImage from '../src/assets/img/hero-img.png';
 import Feature1BgImg from '../src/assets/img/feature1_bg.png';
@@ -89,32 +87,32 @@ export const featuresData = {
   ],
 };
 
-// export const testimonialsData = [
-//   {
-//     image: Avatar1Img,
-//     name: 'John Fang',
-//     web: 'wordfaang.com',
-//     message:
-//       'Suspendisse ultrices at diam lectus nullam. Nisl, sagittis viverra enim erat tortor ultricies massa turpis. Arcu pulvinar aenean nam laoreet nulla.',
-//     delay: '300',
-//   },
-//   {
-//     image: Avatar2Img,
-//     name: 'Jane Doe',
-//     web: 'janedoee.com',
-//     message:
-//       'Suspendisse ultrices at diam lectus nullam. Nisl, sagittis viverra enim erat tortor ultricies massa turpis. Arcu pulvinar aenean nam laoreet nulla.',
-//     delay: '600',
-//   },
-//   {
-//     image: Avatar3Img,
-//     name: 'Jim Ferry',
-//     web: 'jimjimf.com',
-//     message:
-//       'Suspendisse ultrices at diam lectus nullam. Nisl, sagittis viverra enim erat tortor ultricies massa turpis. Arcu pulvinar aenean nam laoreet nulla.',
-//     delay: '900',
-//   },
-// ];
+export const testimonialsData = [
+  {
+    image: Avatar1Img,
+    name: 'John Fang',
+    web: 'wordfaang.com',
+    message:
+      'Suspendisse ultrices at diam lectus nullam. Nisl, sagittis viverra enim erat tortor ultricies massa turpis. Arcu pulvinar aenean nam laoreet nulla.',
+    delay: '300',
+  },
+  {
+    image: Avatar2Img,
+    name: 'Jane Doe',
+    web: 'janedoee.com',
+    message:
+      'Suspendisse ultrices at diam lectus nullam. Nisl, sagittis viverra enim erat tortor ultricies massa turpis. Arcu pulvinar aenean nam laoreet nulla.',
+    delay: '600',
+  },
+  {
+    image: Avatar3Img,
+    name: 'Jim Ferry',
+    web: 'jimjimf.com',
+    message:
+      'Suspendisse ultrices at diam lectus nullam. Nisl, sagittis viverra enim erat tortor ultricies massa turpis. Arcu pulvinar aenean nam laoreet nulla.',
+    delay: '900',
+  },
+];
 
 export const ctaData = {
   title: 'Try for free!',
